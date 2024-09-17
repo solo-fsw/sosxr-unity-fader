@@ -16,8 +16,8 @@ namespace SOSXR.DOTweenExtender
         [SerializeField] private float m_duration = 2.5f;
 
 
-        [ContextMenu(nameof(FindAllAudioSources))]
-        public void FindAllAudioSources()
+        [ContextMenu(nameof(FindAllAudioSourcesInScene))]
+        public void FindAllAudioSourcesInScene()
         {
             m_sources = new List<AudioSource>();
             m_sources = FindObjectsOfType<AudioSource>().ToList();
@@ -40,7 +40,7 @@ namespace SOSXR.DOTweenExtender
         }
 
 
-        private IEnumerator AudioFadeCR(AudioSource audioSource, float duration, float targetVolume)
+        private IEnumerator AudioFadeCR(AudioSource audioSource, float fadeDuration, float targetVolume)
         {
             if (audioSource == null || !audioSource.gameObject.activeInHierarchy)
             {
@@ -48,9 +48,9 @@ namespace SOSXR.DOTweenExtender
             }
 
             float currentTime = 0;
-            var start = audioSource.volume;
+            var startVolume = audioSource.volume;
 
-            while (currentTime < duration)
+            while (currentTime < fadeDuration)
             {
                 currentTime += Time.deltaTime;
 
@@ -59,7 +59,7 @@ namespace SOSXR.DOTweenExtender
                     yield break;
                 }
 
-                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+                audioSource.volume = Mathf.Lerp(startVolume, targetVolume, currentTime / fadeDuration);
 
                 yield return null;
             }
