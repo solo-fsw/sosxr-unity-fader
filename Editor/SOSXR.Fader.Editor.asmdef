@@ -1,18 +1,18 @@
 {
-    "name": "SOSXR.Fader.Editor",
-    "rootNamespace": "",
-    "references": [
-        "GUID:fb316f1d8184547daa6e182973c856a9"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "SOSXR.Fader.Editor",
+  "rootNamespace": "",
+  "references": [
+    "GUID:fb316f1d8184547daa6e182973c856a9"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }
