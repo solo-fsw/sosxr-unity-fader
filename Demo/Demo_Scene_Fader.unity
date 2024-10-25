@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 775930466}
   - component: {fileID: 775930467}
   m_Layer: 0
-  m_Name: AudioSource
+  m_Name: AudioSource (With Fader)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 855395471}
   - component: {fileID: 855395474}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Main Camera (With Fader)
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-namespace SOSXR.DOTweenExtender
+namespace SOSXR.Fader
 {
     public class ImageFader : MonoBehaviour
     {

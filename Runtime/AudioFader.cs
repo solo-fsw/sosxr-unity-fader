@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 
-namespace SOSXR.DOTweenExtender
+namespace SOSXR.Fader
 {
     /// <summary>
     ///     Supports setting the desired AudioSource(s) in the inspector, or to search for all available AudioSources in the
@@ -69,6 +69,12 @@ namespace SOSXR.DOTweenExtender
         private void OnDisable()
         {
             StopAllCoroutines();
+        }
+        
+        
+        private void Blaat()
+        {
+           // var builddestroy = GetComponent<DestroyInBuild>();
         }
     }
 }
