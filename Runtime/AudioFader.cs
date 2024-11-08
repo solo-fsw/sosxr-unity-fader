@@ -70,11 +70,11 @@ namespace SOSXR.Fader
         {
             StopAllCoroutines();
         }
-        
-        
+
+
         private void Blaat()
         {
-           // var builddestroy = GetComponent<DestroyInBuild>();
+            // var builddestroy = GetComponent<DestroyInBuild>();
         }
     }
 }
