@@ -20,7 +20,7 @@ namespace SOSXR.Fader
         public void FindAllAudioSourcesInScene()
         {
             m_sources = new List<AudioSource>();
-            m_sources = FindObjectsOfType<AudioSource>().ToList();
+            m_sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None).ToList();
         }
 
 
