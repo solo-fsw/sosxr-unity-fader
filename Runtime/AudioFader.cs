@@ -14,28 +14,45 @@ namespace SOSXR.Fader
     {
         [SerializeField] private List<AudioSource> m_sources;
         [SerializeField] private float m_duration = 2.5f;
+        [SerializeField] private float m_targetVolume = 0.35f;
+        [SerializeField] private AnimationCurve m_fadeCurve = AnimationCurve.EaseInOut(0, 1, 1, 0);
 
 
         [ContextMenu(nameof(FindAllAudioSourcesInScene))]
         public void FindAllAudioSourcesInScene()
         {
-            m_sources = new List<AudioSource>();
             m_sources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None).ToList();
         }
 
 
-        [ContextMenu(nameof(StartAudioFade))]
-        public void StartAudioFade()
+        [ContextMenu(nameof(StartAudioFadeOut))]
+        public void StartAudioFadeOut()
         {
-            StartAudioFade(m_duration);
+            AudioFade(m_duration, 0f);
         }
 
 
-        public void StartAudioFade(float fadeDuration)
+        [ContextMenu(nameof(StartAudioFadeIn))]
+        public void StartAudioFadeIn()
         {
+            AudioFade(m_duration, 1f);
+        }
+
+
+        [ContextMenu(nameof(StartAudioFadeTo))]
+        public void StartAudioFadeTo()
+        {
+            AudioFade(m_duration, m_targetVolume);
+        }
+
+
+        public void AudioFade(float fadeDuration, float targetVolume)
+        {
+            StopAllCoroutines();
+
             foreach (var source in m_sources)
             {
-                StartCoroutine(AudioFadeCR(source, fadeDuration, 0));
+                StartCoroutine(AudioFadeCR(source, fadeDuration, targetVolume));
             }
         }
 
@@ -59,22 +76,20 @@ namespace SOSXR.Fader
                     yield break;
                 }
 
-                audioSource.volume = Mathf.Lerp(startVolume, targetVolume, currentTime / fadeDuration);
+                var t = currentTime / fadeDuration;
+
+                audioSource.volume = Mathf.Lerp(startVolume, targetVolume, m_fadeCurve.Evaluate(1 - t));
 
                 yield return null;
             }
+
+            audioSource.volume = targetVolume;
         }
 
 
         private void OnDisable()
         {
             StopAllCoroutines();
-        }
-
-
-        private void Blaat()
-        {
-            // var builddestroy = GetComponent<DestroyInBuild>();
         }
     }
 }
